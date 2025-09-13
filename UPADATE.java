@@ -1,0 +1,28 @@
+package Crud;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class UPADATE {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc_db", "root", "root");
+		PreparedStatement ps = con.prepareStatement("update productt set name=? where id=?");
+		ps.setString(1,"watermerker");
+		ps.setInt(2, 2);
+		
+		
+		int i = ps.executeUpdate();
+		if (i > 0) {
+			System.out.println("updated");
+
+		} else {
+
+			System.out.println("faild");
+
+		}
+	}
+}
